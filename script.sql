@@ -75,8 +75,8 @@ END;
 DO $$
     DECLARE
         cur_alunos_sozinhos REFCURSOR;
-        v_alunos INT;
-        v_estudo INT := 0;
+        v_alunos INT DEFAULT -1;
+        v_estudo INT := 1;
         v_nome_tabela VARCHAR(200) := 'student_prediction';
         BEGIN
         OPEN cur_alunos_sozinhos FOR EXECUTE
@@ -92,20 +92,10 @@ DO $$
             ,
             v_nome_tabela
         )USING v_estudo;
-        -- LOOP
-        --     FETCH cur_alunos_sozinhos INTO v_alunos;
-        --     EXIT WHEN NOT FOUND;
-        --     IF v_alunos IS NULL THEN
-        --         v_alunos = -1;
-        --     END IF;
-        -- END LOOP;
 
         LOOP
         FETCH cur_alunos_sozinhos INTO v_alunos;
         EXIT WHEN NOT FOUND;
-        -- IF v_alunos IS NULL THEN
-        --         v_alunos = -1;
-        -- END IF;
         RAISE NOTICE '%', v_alunos;
         END LOOP;
         CLOSE cur_alunos_sozinhos;
