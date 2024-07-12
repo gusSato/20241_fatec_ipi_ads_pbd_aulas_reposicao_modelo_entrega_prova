@@ -1,2 +1,2 @@
-Nomes dos integrantes completos e sem abreviações e seus RAS
-Somente serão considerados os integrantes que tiverem ingressado com, no máximo, 30 minutos de atraso
+Gustavo de Oliveira Sato 2040482213018
+Natalia Vasques de Lira  2040482313015
