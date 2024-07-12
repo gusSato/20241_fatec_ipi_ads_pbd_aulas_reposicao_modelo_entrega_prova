@@ -106,6 +106,26 @@ $$
 -- ----------------------------------------------------------------
 -- 4 Salário versus estudos
 --escreva a sua solução aqui
+DO $$
+DECLARE
+    --cursor vinculado (bound)
+    cur_alunos_salario CURSOR FOR SELECT studentid FROM
+    student_prediction
+    WHERE salary = 5 AND prep_exam = 2;
+    tupla RECORD;
+    resultado TEXT DEFAULT '';
+    BEGIN
+
+    OPEN cur_alunos_salario;
+    FETCH cur_alunos_salario INTO tupla;
+    WHILE FOUND LOOP
+        resultado := resultado || tupla.studentid || ',' ;
+        FETCH cur_alunos_salario INTO tupla;
+    END LOOP;
+    CLOSE cur_alunos_salario;
+    RAISE NOTICE '%', tupla;
+END;
+$$
 
 
 -- ----------------------------------------------------------------
